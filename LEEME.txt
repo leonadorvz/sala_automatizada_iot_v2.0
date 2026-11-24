@@ -1,0 +1,33 @@
+========================================================================
+SISTEMA DE SALA AUTOMATIZADA - INACAP (ARQUITECTURA OT & ISO 27400)
+========================================================================
+
+Ubicación del Proyecto:
+C:\Users\leonardo\OneDrive\Desktop\iote\SALAAUTOMATIZADA
+
+1. INTERFAZ DE USUARIO / SALA (UserRoomActivity):
+- Destinada a: Profesores, alumnos o pantalla fija en la sala.
+- Acceso: profesor@sala.cl | Contraseña: cualquier clave (ej: 123456)
+- Características:
+  * Visualización en tiempo real de Temperatura (°C), Humedad (% RH) y Luz (LDR).
+  * Semáforo de confort ambiental de la sala (Óptimo, Cálido, Alerta).
+  * Estado del ventilador/extractor (Modo informativo: Encendido / Apagado).
+  * Estado de ocupación y actividad de la sala.
+  * Sin acceso a controles críticos para garantizar la seguridad operativa.
+  * Botón directo para ingresar al modo Administrador si se tienen credenciales.
+
+2. INTERFAZ DE ADMINISTRADOR (AdminActivity):
+- Destinada a: Administradores del sistema OT e ingenieros de mantenimiento.
+- Acceso: admin@sala.cl | Contraseña: cualquier clave (ej: 123456)
+- Características:
+  * Control Manual de Actuadores (Ventilador) con validación obligatoria de PIN ISO 27400 (Hash SHA-256).
+  * PIN de Operador: 1234
+  * Botón de Parada de Emergencia inmediata de actuadores.
+  * Configuración y conexión Wi-Fi hacia el hardware (Arduino / ESP32 en 192.168.4.1).
+  * Alerta visual crítica cuando la temperatura excede los 30.0 °C.
+  * Consola en tiempo real de Registro de Auditoría de Seguridad (ISO 27400 Security Audit Log).
+  * Botón para previsualizar la interfaz de sala tal como la ven los usuarios.
+
+3. FLUJO DE NAVEGACIÓN (LoginActivity):
+- Al iniciar sesión con un correo "admin@...", el sistema abre directamente el Panel Administrador.
+- Al iniciar sesión con cualquier otro correo (ej: "profesor@..."), el sistema abre la Interfaz de Sala.
